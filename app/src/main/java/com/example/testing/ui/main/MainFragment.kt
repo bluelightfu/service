@@ -48,7 +48,8 @@ class MainFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
+        requireActivity().stopService(serviceIntent)
     }
 }
