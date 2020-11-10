@@ -12,11 +12,13 @@ class Service: Service() {
         super.onCreate()
     }
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-
+        val notificationIntent = Intent(this,MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,0)
         val notification = NotificationCompat.Builder(this,CHANNEL_ID)
                 .setContentTitle("Notification Testing")
                 .setContentText("hello!")
                 .setSmallIcon(R.drawable.notification_icon)
+                .setContentIntent(pendingIntent)
                 .build()
         startForeground(1,notification)
         return START_NOT_STICKY
